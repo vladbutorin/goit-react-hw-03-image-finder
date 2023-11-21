@@ -37,16 +37,18 @@ class App extends Component {
     }));
   };
 
-  
   handleSubmit = query => {
+    const { searchName } = this.state;
+    if (searchName.toLowerCase() === query.toLowerCase()) {
+      return;
+    }
     this.setState({
-      searchName: query, 
-      images: [], 
-      currentPage: 1, 
+      searchName: query,
+      images: [],
+      currentPage: 1,
     });
   };
 
-  
   addImages = async () => {
     const { searchName, currentPage } = this.state;
     try {
